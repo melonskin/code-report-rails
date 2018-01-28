@@ -12,13 +12,10 @@ class UserController < ApplicationController
         
         baseurl = "http://api.github.com/" 
         profileUrl = baseurl + "users/" + username
-        res = HTTParty.get(profileUrl)
-        profile = res.parsed_response
-        
         reposUrl = baseurl + "users/" + username + "/repos"
         
         repos = HTTParty.get(reposUrl).parsed_response
-        if repos.length == 0
+        if !repos || repos.length == 0
             return redirect_to "home"
         end
         logger.info repos
