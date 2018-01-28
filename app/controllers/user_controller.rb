@@ -73,7 +73,30 @@ class UserController < ApplicationController
         @username = params[:username]
         @image = User.find_by_login(@username).avatar_url
         @user = User.find_by_login(@username)
+        @keyword = getKeyword(@user)
         render "show"
+    end
+    
+    def getKeyword(user)
+        
+        if user.followers.to_i > 100
+            return "POPULAR"
+        elsif user.commits_num.to_i > 200
+            return "CONSISTENT"
+        elsif user.lang1 == "Java"
+            return "STRONG"
+        elsif user.lang1 == "C"
+            return "OLD SCHOOL"
+        elsif user.public_repos.to_i > 20
+            return "RICH"
+        elsif user.following > 100
+            return "FRIEND"
+        elsif user.login.length > 15
+            return "FREE"
+        else
+            return "OPEN"
+        end
+        
     end
     
     def getLangRes(reposInfo)
