@@ -1,6 +1,9 @@
 <% 
 def getDate(datetime) 
-    return datetime[0, 10]
+   if(datetime == nil)
+      return ""
+   end
+   return datetime[0, 10]
 end
 
 def getTime(datetime) 
@@ -11,10 +14,16 @@ end
 <p><%= @user.inspect %> </p>
 <div class=" page" id = "cover"   >
    <div class = 'content'>
-      <h1> Coding report for <%= @username %> </h1>
-      <h1><%= @username %></h1>
+      
+      <p>your keyword is </p>
+      <p> 
+         <span>
+          <%= @keyword %>
+         </span> 
+      </p>
       <p>Welcome to <%= @username %>'s page</p>
       <img id = 'avatar' src = '<%= @image %>'>
+      
    </div>
   <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i> </button>
 </div>
@@ -27,9 +36,9 @@ end
        <p>Remember your first piece of code (survived) ?</p>
        <p> It's <span> <%= @user.old_repo %></span>, you created it at <span> <%= getDate(@user.old_repo_time) %> </span>
        </p>
-       <div>
-          <img width = 500px height = 300px src = 'https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png'>
-       </div>
+       <!--<div>-->
+       <!--   <img width = 500px height = 300px src = 'https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png'>-->
+       <!--</div>-->
    </div>   
    <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i> </button>
 </div>
@@ -102,6 +111,8 @@ end
 </div>
 
 <div class="page hide" >
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+
    <div class = 'content'>
       <p>
            On <span> <%= getDate(@user.late_commit_time)  %> </span>,
@@ -116,7 +127,6 @@ end
           At that moment, project <span> <%= @user.late_commit_repo  %> </span> was with you.
       </p>
    </div>
-   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
 </div>
     
 <script>
