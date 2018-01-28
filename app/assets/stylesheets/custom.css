@@ -38,14 +38,14 @@ a {
   text-align: center;
   top: 0;
   left: 0;
-  
+  /*transition: 10s linear;*/
  
 }
 /*page {*/
   
 /*  transition: 10s linear;*/
 /*}*/
-page hide {
+.page .hide {
   display: none;
 }
 
