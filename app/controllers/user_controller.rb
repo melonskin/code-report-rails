@@ -34,7 +34,7 @@ class UserController < ApplicationController
         langRes = getLangRes(reposInfo)
         commitsRes = countCommits(reposInfo, username)
         
-        
+        user = Octokit.user username
         user_params = {}
         user_params["commits_num"] = commitsRes["commits_num"]
         user_params["big_repo_commits_num"] = commitsRes["big_repo_commits_num"]
