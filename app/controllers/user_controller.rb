@@ -7,6 +7,7 @@ class UserController < ApplicationController
     def create
         #@user = params[:username]
         #puts params[:username]
+        
         redirect_to :controller => "user", :action=>"show", :username => params[:username]
     end
     
