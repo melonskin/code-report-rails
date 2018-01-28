@@ -38,8 +38,14 @@ a {
   text-align: center;
   top: 0;
   left: 0;
+  
+ 
 }
-.hide {
+/*page {*/
+  
+/*  transition: 10s linear;*/
+/*}*/
+page hide {
   display: none;
 }
 
@@ -60,3 +66,5 @@ a {
    /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
+
+
