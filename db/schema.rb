@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(version: 20180128070254) do
 
   create_table "users", force: :cascade do |t|
     t.string "login"
-    t.string "avatarurl"
-    t.string "htmlurl"
+    t.string "avatar_url"
+    t.string "html_url"
     t.string "name"
-    t.string "repos"
+    t.string "public_repos"
     t.string "followers"
     t.string "following"
     t.datetime "createat"
