@@ -1,10 +1,11 @@
-<%= csrf_meta_tags %>
+<%# include partials/header %>
+
 <div class = container>
   <div class = jumbotron>
     <p>Welcome to cold pot</p>
     
     <div class="input-group">
-      <form  action = '/' method = 'POST'>
+      <form action = '/' method = 'POST'>
         <input class = 'form-control' type = 'text' name = 'username' placeholder = 'please input your github username'>
         <span class="input-group-btn">
           <button class="btn btn-default">Go!</button>
@@ -14,3 +15,6 @@
     
   </div>
 </div>
+    
+  
+<%# include partials/footer %>

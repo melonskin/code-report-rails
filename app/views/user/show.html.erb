@@ -1,1 +1,41 @@
-<h1>Show page <%= @username %></h1>
+<div class=" page">
+  <!--<div class = 'content'>-->
+      <h1> Coding report for <%= @username %> </h1>
+      <h1><%= @username %></h1>
+      <p>Welcome to <%= @username %>'s page</p>
+  <!--</div>-->
+  <button class="btn btn-default next">Next</button>
+</div>
+<div class=" page hide">
+   <button class="btn btn-default back">Back</button>
+   <!--<div class = 'content'>-->
+       <h1> you have the 1 page</h1>
+   <!--</div>-->
+   <button class="btn btn-default next">Next</button>
+</div>
+<div class="page hide">
+  
+   <button class="btn btn-default back">Back</button>
+   <h1> you have the 2 page</h1>
+   <button class="btn btn-default next">Next</button>
+</div>
+<div class="page hide">
+   <button class="btn btn-default back">Back</button>
+   <h1> you have the 3 page</h1>
+   <button class="btn btn-default next">Next</button>
+</div>
+<div class="page hide" >
+   
+   <button class="btn btn-default back">Back</button>
+   <h1> you have the 4 page</h1>
+</div>
+    
+<script>
+  $('.next').click(function(){
+  $(this).parent().toggleClass('hide').next().toggleClass('hide');
+});
+
+$('.back').click(function(){
+   $(this).parent().toggleClass('hide').prev().toggleClass('hide');
+});
+</script>   
