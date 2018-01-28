@@ -14,9 +14,9 @@ end
 <div class=" page" id = "cover"   >
    <div class = 'content'>
       
-      <p>your keyword is </p>
+      <p>Your coding keyword is </p>
       <p> 
-         <span>
+         <span style="font-size: 300%">
           <%= @keyword %>
          </span> 
       </p>
@@ -30,10 +30,12 @@ end
    <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i> </button>
    <div class = 'content'>
      <p> Hello, <span> <%= @user.login %> </span>!  </p>
-       <p> You created your GitHub account at <span> <%= getDate(@user.createat) %> </span> </p>
+     <p>On <span> <%= getDate(@user.createat) %> </span> </p>
+       <p> You created your GitHub account </p>
        <p>Is it a long journey?</p>
        <p>Remember your first piece of code (survived) ?</p>
-       <p> It's <span> <%= @user.old_repo %></span>, you created it at <span> <%= getDate(@user.old_repo_time) %> </span>
+       <p> It's <span> <%= @user.old_repo %></span>,</p> 
+       <p>you created it at <span> <%= getDate(@user.old_repo_time) %> </span>
        </p>
        <!--<div>-->
        <!--   <img width = 500px height = 300px src = 'https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png'>-->
@@ -45,7 +47,8 @@ end
 <div class="page hide">
    <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
    <div class = 'content'>
-      <p> Of course you have met some coding buddies, you like watching <span> <%= @user.following %> </span> guys' codes. </p>
+      <p> Of course you have met some coding buddies, </p>
+      <p>you like watching <span> <%= @user.following %> </span> guys' codes. </p>
       <p>There are also <span> <%= @user.followers %> </span> hackers thinking your code is cute.</p>
       <% if(@user.followers < "5") then  %>
       <p> Congratulation! </p>
@@ -64,7 +67,7 @@ end
          your best mate is <span> <%= @user.lang1  %> </span> 
       </p>
       <p>
-         you have  created  <span> <%= @user.lang1num  %> </span> repositor<%= if @user.lang1num.to_i <= 1 then 'y' else 'ies' end %> by this language. 
+         You have made <span> <%= @user.lang1num  %> </span> cool project<%= if @user.lang1num.to_i <= 1 then '' else 's' end %> with it. 
       </p>
       <% if @user.lang2 %>
       <p>Followed by <span><%= @user.lang2 %></span>: <span><%= @user.lang2num %></span>
@@ -86,7 +89,8 @@ end
       Until now, <span> <%= @user.commits_num  %> </span> commits have been produced by you to the world,
       </p>
       <p> 
-      The largest project you have been working on is <span> <%= @user.big_repo %> </span> with <span> <%= @user.big_repo_commits_num %> </span> commits. </span> 
+      The largest project you have been working on is <span> <%= @user.big_repo %> </span> </p>
+      <p>with <span> <%= @user.big_repo_commits_num %> </span> commits. </span> 
       </p>
       <p>
           <% if @user.big_repo_commits_num > "50" %>
