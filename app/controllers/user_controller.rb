@@ -15,7 +15,7 @@ class UserController < ApplicationController
         reposUrl = baseurl + "users/" + username + "/repos"
         
         repos = HTTParty.get(reposUrl).parsed_response
-        if !repos || repos.length == 0
+        if !repos || repos.length < 5
             return redirect_to "home"
         end
         logger.info repos
@@ -33,7 +33,7 @@ class UserController < ApplicationController
         end
         langRes = getLangRes(reposInfo)
         commitsRes = countCommits(reposInfo, username)
-        user = Octokit.user username
+        
         
         user_params = {}
         user_params["commits_num"] = commitsRes["commits_num"]
