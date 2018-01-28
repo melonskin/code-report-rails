@@ -36,7 +36,8 @@ class UserController < ApplicationController
     end
     
     def show
-        @user = User.where(:login => params[:username]).first
+        @username = params[:username]
+        @image = User.find_by_login(@username).avatar_url
         render "show"
     end
     
