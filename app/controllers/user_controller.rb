@@ -16,7 +16,7 @@ class UserController < ApplicationController
         
         repos = HTTParty.get(reposUrl).parsed_response
         if !repos || repos.length < 5
-            return redirect_to "home"
+            return redirect_to "/"
         end
         logger.info repos
         User.where(:login => username).destroy_all
