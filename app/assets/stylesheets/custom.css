@@ -35,26 +35,49 @@ a {
   /*opacity: 0.8;*/
   position: fixed; 
   
-  text-align: center;
+  /*text-align: center;*/
   top: 0;
   left: 0;
   /*transition: 10s linear;*/
  
 }
-/*page {*/
+
+span {
+  font-size: 200%;
   
-/*  transition: 10s linear;*/
-/*}*/
+}
+
+.content {
+  width: 40%;
+  max-width: 700px;
+  height: 70%;
+  /*background-color: green;*/
+  margin:10% auto;
+  padding: 20px;
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*margin-left: -20%;*/
+  /*margin-top: -20%;*/
+  
+  /*padding-top: 10%;*/
+  text-align: center;
+  
+}
+#avatar {
+  width: 40%;
+  height: 40%;
+}
 .page .hide {
   display: none;
 }
 
 .back {
-  /*position: absolute;*/
-  /*left: 50%;*/
+  position: absolute;
+  left: 50%;
   margin-top: 4%;
    /* bring your own prefixes */
-  /*transform: translate(-50%);*/
+  transform: translate(-50%);
 }
 .next {
   /*padding: 0;*/
