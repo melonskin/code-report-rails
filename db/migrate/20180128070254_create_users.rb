@@ -2,10 +2,10 @@ class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
       t.string :login
-      t.string :avatarurl
-      t.string :htmlurl
+      t.string :avatar_url
+      t.string :html_url
       t.string :name
-      t.string :repos
+      t.string :public_repos
       t.string :followers
       t.string :following
       t.timestamp :createat
