@@ -22,8 +22,20 @@ ActiveRecord::Schema.define(version: 20180128070254) do
     t.string "following"
     t.datetime "createat"
     t.datetime "updateat"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "lang1"
+    t.string "lang2"
+    t.string "lang3"
+    t.string "lang1num"
+    t.string "lang2num"
+    t.string "lang3num"
+    t.string "commits_num"
+    t.string "late_commit_repo"
+    t.datetime "late_commit_time"
+    t.string "old_repo"
+    t.datetime "old_repo_time"
+    t.datetime "most_commits_time"
+    t.string "big_repo"
+    t.string "big_repo_commits_num"
   end
 
 end

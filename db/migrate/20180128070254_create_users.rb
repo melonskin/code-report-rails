@@ -24,8 +24,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.timestamp :most_commits_time
       t.string :big_repo
       t.string :big_repo_commits_num
-
-      t.timestamps
     end
   end
 end
