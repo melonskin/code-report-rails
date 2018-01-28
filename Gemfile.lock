@@ -205,11 +205,8 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-<<<<<<< HEAD
   font-awesome-rails
-=======
   github_api
->>>>>>> bc5bad7e44fce0c72f0e7cefafcb246b4b5130ee
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   octokit (~> 4.0)
