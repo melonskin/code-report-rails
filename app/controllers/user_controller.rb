@@ -7,9 +7,19 @@ class UserController < ApplicationController
     
     def create
         username = params[:username]
+        baseurl = "http://api.github.com/" 
+        profileUrl = baseurl + "users/" + username
+        res = HTTParty.get(profileUrl)
+        profile = res.parsed_response
+        
+        reposUrl = baseurl + "users/" + username + "/repos"
+        
+        repos = HTTParty.get(reposUrl).parsed_response
+        langs = {}
         User.where(:login => username).destroy_all
          
         user = Octokit.user username
+        
         user_params = {}
         user_params[:avatar_url] = user[:avatar_url]
         user_params[:html_url] = user[:html_url]
@@ -22,11 +32,11 @@ class UserController < ApplicationController
         user_params[:updateat] = user[:updated_at]
         User.create(user_params)
         #puts params[:username]
-        redirect_to :controller => "user", :action=>"show", :username => username
+        redirect_to :controller => "user", :action=>"show", :username => data["login"]
     end
     
     def show
-        @username = params[:username]
+        @user = User.where(:login => params[:username]).first
         render "show"
     end
     
