@@ -1,6 +1,9 @@
 <% 
 def getDate(datetime) 
-    return datetime[0, 10]
+   if(datetime == nil)
+      return ""
+   end
+   return datetime[0, 10]
 end
 
 def getTime(datetime) 
@@ -10,102 +13,120 @@ end
 
 <p><%= @user.inspect %> </p>
 <div class=" page" id = "cover"   >
-   
-      <h1> Coding report for <%= @username %> </h1>
-      <h1><%= @username %></h1>
+   <div class = 'content'>
+      
+      <p>your keyword is </p>
+      <p> 
+         <span>
+          <%= @keyword %>
+         </span> 
+      </p>
       <p>Welcome to <%= @username %>'s page</p>
-      <img src = '<%= @image %>'>
-  <button class="btn btn-info btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i> </button>
+      <img id = 'avatar' src = '<%= @image %>'>
+      
+   </div>
+  <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i> </button>
 </div>
 <div class=" page hide">
-   <button class="btn btn-info btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i> </button>
-       <!--<h1> you have the 1 page</h1>-->
-       <p> Hello, <span> <%= @user.login %> </span>!  </p>
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i> </button>
+   <div class = 'content'>
+     <p> Hello, <span> <%= @user.login %> </span>!  </p>
        <p> You created your GitHub account at <span> <%= getDate(@user.createat) %> </span> </p>
        <p>Is it a long journey?</p>
        <p>Remember your first piece of code (survived) ?</p>
        <p> It's <span> <%= @user.old_repo %></span>, you created it at <span> <%= getDate(@user.old_repo_time) %> </span>
        </p>
-       <div>
-          <img width = 500px height = 300px src = 'https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png'>
-       </div>
-   <button class="btn btn-primary btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i> </button>
+       <!--<div>-->
+       <!--   <img width = 500px height = 300px src = 'https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png'>-->
+       <!--</div>-->
+   </div>   
+   <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i> </button>
 </div>
+
 <div class="page hide">
-  
-   <button class="btn btn-primary btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-   <!--<h1> you have the 2 page</h1>-->
-   <p> Of course you have met some coding buddies, you like watching <span> <%= @user.following %> </span> guys' codes. </p>
-   <p>There are also <span> <%= @user.followers %> </span> hackers thinking your code is cute.</p>
-   <% if(@user.followers < "5") then  %>
-   <p> Congratulation! </p>
-   <% else %>
-   <p> Come on! Make more friends.</p>
-   <% end %>
-   <button class="btn btn-primary btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+   <div class = 'content'>
+      <p> Of course you have met some coding buddies, you like watching <span> <%= @user.following %> </span> guys' codes. </p>
+      <p>There are also <span> <%= @user.followers %> </span> hackers thinking your code is cute.</p>
+      <% if(@user.followers < "5") then  %>
+      <p> Congratulation! </p>
+      <% else %>
+      <p> Come on! Make more friends.</p>
+      <% end %>
+   </div>
+   <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
 </div>
+
 <div class="page hide">
-   <button class="btn btn-primary btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-   <!--<h1> you have the 3 page</h1>//TODO-->
-   <p>Among your <span> <%= @user.public_repos  %> </span> repositories,</p>
-   <p>
-      your best mate is <span> <%= @user.lang1  %> </span> 
-   </p>
-   <p>
-      you have  created  <span> <%= @user.lang1num  %> </span> repositor<%= if @user.lang1num.to_i <= 1 then 'y' else 'ies' end %> by this language. 
-   </p>
-   <% if @user.lang2 %>
-   <p>Followed by <span><%= @user.lang2 %></span>: <span><%= @user.lang2num %></span>
-   <% end %>
-   <% if @user.lang3 %>
-   ; <span><%= @user.lang3 %></span>: <span><%= @user.lang3num %></span>
-   <% end %>
-   <% if @user.lang2 %>
-   </p>
-   <% end %>
-   <button class="btn btn-primary btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+   <div class = 'content'>
+      <p>Among your <span> <%= @user.public_repos  %> </span> repositories,</p>
+      <p>
+         your best mate is <span> <%= @user.lang1  %> </span> 
+      </p>
+      <p>
+         you have  created  <span> <%= @user.lang1num  %> </span> repositor<%= if @user.lang1num.to_i <= 1 then 'y' else 'ies' end %> by this language. 
+      </p>
+      <% if @user.lang2 %>
+      <p>Followed by <span><%= @user.lang2 %></span>: <span><%= @user.lang2num %></span>
+      <% end %>
+      <% if @user.lang3 %>
+      ; <span><%= @user.lang3 %></span>: <span><%= @user.lang3num %></span>
+      <% end %>
+      <% if @user.lang2 %>
+      </p>
+      <% end %>
+   </div>
+   <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
 </div>
+
 <div class="page hide">
-   <button class="btn btn-primary btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-   <!--<h1> you have the 4 page</h1>//TODO-->
-   <p> 
-   Until now, <span> <%= @user.commits_num  %> </span> commits have been produced by you to the world,
-   </p>
-   <p> 
-   The largest project you have been working on is <span> <%= @user.big_repo %> </span> with <span> <%= @user.big_repo_commits_num %> </span> commits. </span> 
-   </p>
-   <p>
-       <% if @user.big_repo_commits_num > "50" %>
-           Great job!
-        <% else %>
-            Actually, it's not that large..
-        <% end %>
-   </p>
-   <button class="btn btn-primary btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+   <div class = 'content'>
+      <p> 
+      Until now, <span> <%= @user.commits_num  %> </span> commits have been produced by you to the world,
+      </p>
+      <p> 
+      The largest project you have been working on is <span> <%= @user.big_repo %> </span> with <span> <%= @user.big_repo_commits_num %> </span> commits. </span> 
+      </p>
+      <p>
+          <% if @user.big_repo_commits_num > "50" %>
+              Great job!
+           <% else %>
+               Actually, it's not that large..
+           <% end %>
+      </p>
+   </div>
+   <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
 </div>
+
 <div class="page hide">
-   <button class="btn btn-primary btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-   <!--<h1> you have the 5 page</h1>//TODO-->
-   <p> <span> <%= getDate(@user.most_commits_time) %> </span></p>
-   <p>literaly, is your big day (or bug day?), </p>
-   <p>you proposed <span> <%= @user.most_commits_num  %> </span> commits on that day.</p>
-   <button class="btn btn-primary btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+   <div class = 'content'>
+      <p> <span> <%= getDate(@user.most_commits_time) %> </span></p>
+      <p>literaly, is your big day (or bug day?), </p>
+      <p>you proposed <span> <%= @user.most_commits_num  %> </span> commits on that day.</p>
+   </div>
+   <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
 </div>
+
 <div class="page hide" >
-   <button class="btn btn-primary btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-  
-    <p>
-        On <span> <%= getDate(@user.late_commit_time)  %> </span>,
-    </p>
-   <p>
-      You slept so late.
-   </p>
-   <p>
-      Kept coding until <span><%= getTime(@user.late_commit_time) %></span>
-   </p>
-   <p>
-       At that moment, project <span> <%= @user.late_commit_repo  %> </span> was with you.
-   </p>
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+
+   <div class = 'content'>
+      <p>
+           On <span> <%= getDate(@user.late_commit_time)  %> </span>,
+      </p>
+      <p>
+         You slept so late.
+      </p>
+      <p>
+         Kept coding until <span><%= getTime(@user.late_commit_time) %></span>
+      </p>
+      <p>
+          At that moment, project <span> <%= @user.late_commit_repo  %> </span> was with you.
+      </p>
+   </div>
 </div>
     
 <script>
