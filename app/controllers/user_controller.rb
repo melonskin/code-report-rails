@@ -47,7 +47,7 @@ class UserController < ApplicationController
         user_params["most_commits_time"] = commitsRes["most_commits_time"]
         user_params["most_commits_num"] = commitsRes["most_commits_num"]
         user_params["old_repo_time"] = commitsRes["old_repo_time"]
-        user_params["old_repo"] = commitsRes["old_repo_time"]
+        user_params["old_repo"] = commitsRes["old_repo"]
         user_params[:lang1] = (langRes.length > 0) ? langRes[0][0] : nil
         user_params[:lang1num] = (langRes.length > 0) ? langRes[0][1] : nil
         user_params[:lang2] = (langRes.length > 1) ? langRes[1][0] : nil
