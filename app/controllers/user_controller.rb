@@ -18,10 +18,15 @@ class UserController < ApplicationController
         reposUrl = baseurl + "users/" + username + "/repos"
         
         repos = HTTParty.get(reposUrl).parsed_response
+        if repos.length == 0
+            return redirect_to "home"
+        end
+        logger.info repos
         User.where(:login => username).destroy_all
         reposInfo = []
         repos.each do |repo|
             repoInfo = {}
+            logger.info repo["name"]
             repoInfo[:repoName] = repo["name"]
             repoInfo[:lang] = repo["language"]
             repoInfo[:created_at] = repo["created_at"]
@@ -41,6 +46,8 @@ class UserController < ApplicationController
         user_params["late_commit_repo"] = commitsRes["late_commit_repo"]
         user_params["most_commits_time"] = commitsRes["most_commits_time"]
         user_params["most_commits_num"] = commitsRes["most_commits_num"]
+        user_params["old_repo_time"] = commitsRes["old_repo_time"]
+        user_params["old_repo"] = commitsRes["old_repo_time"]
         user_params[:lang1] = (langRes.length > 0) ? langRes[0][0] : nil
         user_params[:lang1num] = (langRes.length > 0) ? langRes[0][1] : nil
         user_params[:lang2] = (langRes.length > 1) ? langRes[1][0] : nil
@@ -91,6 +98,8 @@ class UserController < ApplicationController
     end
     
     def countCommits(reposInfo, username)
+        old_repo = nil
+        old_repo_time = "9999-09-13T19:39:51Z"
         commits_num = 0
         big_repo_commits_num = 0
         big_repo = nil
@@ -104,13 +113,17 @@ class UserController < ApplicationController
         baseurl = "http://api.github.com/repos/" + username
         reposInfo.each do |repo|
             repoName = repo[:repoName]
-            commitsUrl = baseurl + "/" + repoName + "/commits"
+            commitsUrl = baseurl + "/" + repoName + "/commits?page=1&per_page=200"
             commits = HTTParty.get(commitsUrl).parsed_response
             commitsNum = commits.length
             commits_num += commitsNum
             if commitsNum > big_repo_commits_num
                 big_repo_commits_num = commitsNum
                 big_repo = repoName
+            end
+            if old_repo_time > repo[:created_at]
+                old_repo_time = repo[:created_at]
+                old_repo = repoName
             end
             commits.each do |commit|
                 datetime = commit["commit"]["author"]["date"]
@@ -145,7 +158,8 @@ class UserController < ApplicationController
         res["late_commit_repo"] = late_commit_repo
         res["most_commits_time"] = most_commits_time
         res["most_commits_num"] = most_commits_num
+        res["old_repo_time"] = old_repo_time
+        res["old_repo"] = old_repo
         return res
     end
-
 end
