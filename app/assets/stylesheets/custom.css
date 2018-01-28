@@ -1,7 +1,7 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+  font: 19px 'Roboto', sans-serif!important;;
   background-image: url(https://ledroideenchaine.com/wp-content/uploads/2016/08/Legacy-code.jpg);
   background-repeat: no-repeat;
   background-attachment:fixed;
@@ -9,6 +9,13 @@ body {
   background-size:cover;
   
 }
+
+span {
+  font-size: 200%;
+  /*color: ;*/
+  font-weight: 500;
+}
+
 .jumbotron {
   /*background-image:  url(https://ledroideenchaine.com/wp-content/uploads/2016/08/Legacy-code.jpg);*/
   opacity: 0.8;
@@ -52,6 +59,7 @@ a {
 .back {
   /*position: absolute;*/
   /*left: 50%;*/
+  background: steelblue;
   margin-top: 4%;
    /* bring your own prefixes */
   /*transform: translate(-50%);*/
@@ -61,6 +69,7 @@ a {
   position: absolute;
   /*width: 5%;*/
   /*height: 5%;*/
+  background-color: steelblue;
   left : 50%;
   bottom: 0;
    /* bring your own prefixes */
