@@ -9,26 +9,67 @@
 </div>
 <div class=" page hide">
    <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i> </button>
-   <!--<div class = 'content'>-->
        <h1> you have the 1 page</h1>
-   <!--</div>-->
+       <p> Hello, <span> <%= @user.login %> </span>!  </p>
+       <p> You created your GitHub account at <span> <%= @user.createat %> </span> </p>
+       <p> At <span> <%= @user.old_repo_time %> </span>, you created your very first repository,<span> <%= @user.old_repo %> </span> ,
+       </p>
+       
    <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i> </button>
 </div>
 <div class="page hide">
   
    <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
    <h1> you have the 2 page</h1>
+   <p> Until now, you have followed <span> <%= @user.following %> </span> people on GitHub,
+   and there are <span> <%= @user.followers %> </span> following you
+   </p>
+   <% if(@user.followers != "0") then  %>
+   <p> Congratulation! </p>
+   <% else %>
+   <p> Come on! </p>
+   <% end %>
    <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
 </div>
 <div class="page hide">
    <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-   <h1> you have the 3 page</h1>
+   <!--<h1> you have the 3 page</h1>//TODO-->
+   <p> you have created and participated in <span> <%= @user.public_repos  %> </span> public repositories,</p>
+   <p>
+      your favorite language is  <span> <%= @user.lang1  %> </span> 
+   </p>
+   <p>
+      you have  created  <span> <%= @user.lang1num  %> </span> repositor<%= if @user.lang1num.to_i <= 1 then 'y' else 'ies' end %> by this language. 
+   </p>
+   <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+</div>
+<div class="page hide">
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+   <!--<h1> you have the 4 page</h1>//TODO-->
+   <p> 
+   Until now, you have proposed <span> <%= @user.commits_num  %> </span> commits
+   </p>
+   <p> 
+   The largest repository is <span> <%= @user.big_repo  %> </span>, and contains <span> <%= @user.big_repo_commits_num %> </span> commits. </span> 
+   </p>
+   <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+</div>
+<div class="page hide">
+   <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+   <!--<h1> you have the 5 page</h1>//TODO-->
+   <p> At <span> <%= @user.most_commits_time %> </span>, you proposed <span> <%= @user.most_commits_num  %> </span> commits. What a busy day! </p>
    <button class="btn btn-default btn-lg next">Next <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
 </div>
 <div class="page hide" >
-   
+    <h1> you have the 6 page</h1>
+   <p>
+      You worked really hard at <span> <%= @user.late_commit_time  %> </span>, fighting with bugs in <span> <%= @user.late_commit_repo  %> </span>
+   </p>
+   <p>
+      god bless you !
+   </p>
    <button class="btn btn-default btn-lg back">Back <i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-   <h1> you have the 4 page</h1>
+  
 </div>
     
 <script>

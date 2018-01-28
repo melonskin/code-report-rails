@@ -7,6 +7,9 @@ class UserController < ApplicationController
     
     def create
         username = params[:username]
+        
+        return redirect_to :controller => "user", :action=>"show", :username => username
+        
         baseurl = "http://api.github.com/" 
         profileUrl = baseurl + "users/" + username
         res = HTTParty.get(profileUrl)
